@@ -2,12 +2,15 @@ import os
 import sys
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-llm = ChatOpenAI(model="o4-mini")
-
+# llm = ChatOpenAI(model="o4-mini")
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 
 
 @tool
