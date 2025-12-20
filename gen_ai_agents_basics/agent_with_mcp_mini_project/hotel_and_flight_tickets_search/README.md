@@ -6,12 +6,15 @@ A comprehensive travel booking assistant built using the **Google Agent Developm
 
 | File | Description |
 | --- | --- |
-| `airbnb_mcp.py` | MCP Server providing **Hotel** prices for specific cities and dates. |
-| `easemytrip_mcp.py` | MCP Server providing **Flight** fares between cities. |
-| `makemytrip_mcp.py` | MCP Server providing both **Flight and Hotel** price information. |
-| `mmt_system.py` | The backend logic class (`MakeMyTripSystem`) shared across vendors for data simulation. |
-| `mcp_client_test.py` | A standalone testing utility to verify MCP server connectivity without the LLM/Agent. |
-| `main_agent.py` | The primary Google ADK script that runs the `LlmAgent` using a `Runner`. |
+| [`airbnb.py`](./booking_vendors/airbnb/airbnb.py) | The backend logic class (`Airbnb`) for providing hotels prices. |
+| [`easemytrip.py`](./booking_vendors/ease_my_trip/easemytrip.py) | The backend logic class (`EaseMyTripSystem`) for providing flights prices. |
+| [`makemytrip.py`](./booking_vendors/make_my_trip/makemytrip.py) | The backend logic class (`MakeMyTripSystem`) for providing flights and hotels prices. |
+| [`airbnb_mcp_server.py`](./booking_vendors/airbnb/airbnb_mcp_server.py) | MCP Server providing **Hotel** prices for specific cities and dates. |
+| [`easemytrip_mcp_server.py`](./booking_vendors/ease_my_trip/easemytrip_mcp.py) | MCP Server providing **Flight** fares between cities. |
+| [`makemytrip_mcp_server.py`](./booking_vendors/make_my_trip/makemytrip_mcp.py) | MCP Server providing both **Flight and Hotel** price information. |
+| [`mcp_client_test.py`](./mcp_client/mcp_client.py) | A standalone testing utility to verify MCP server connectivity without the LLM/Agent. |
+| [`agent.py`](./google_adk_agent/agent/agent.py) | The primary Google ADK script that runs the `LlmAgent` to run using `adk web` command. |
+| [`google_agent.py`](./google_adk_agent/agent/google_agent.py) | The primary Google ADK script that runs the `LlmAgent` using a `Runner` class. |
 | `.env` | Stores sensitive environment variables like `LLM_API_KEY`. |
 
 ---
@@ -33,16 +36,16 @@ pip install google-adk litellm fastmcp python-dotenv
 
 The agent requires all three vendor servers to be active. Open three separate terminals and run:
 
-* **Airbnb (Port 8003):** `python airbnb_mcp.py`
-* **EaseMyTrip (Port 8001):** `python easemytrip_mcp.py`
-* **MakeMyTrip (Port 8002):** `python makemytrip_mcp.py`
+* **Airbnb (Port 8003):** `python3 airbnb_mcp_server.py`
+* **EaseMyTrip (Port 8001):** `python3 easemytrip_mcp_server.py`
+* **MakeMyTrip (Port 8002):** `python3 makemytrip_mcp_server.py`
 
 ### 3. (Optional) Test the Servers
 
 Before running the AI, verify the tools are reachable using the test client:
 
 ```bash
-python mcp_client_test.py
+python3 mcp_client_test.py
 
 ```
 
@@ -51,7 +54,7 @@ python mcp_client_test.py
 Ensure your `.env` file is configured, then start the main agent:
 
 ```bash
-python main_agent.py
+python3 main_agent.py
 
 ```
 
