@@ -92,6 +92,7 @@ Examples:
 Used in production.
 
 ---
+
 # LLM Evaluation
 <details>
 <summary>LLM Evaluation</summary>
@@ -390,7 +391,9 @@ Tools:
 * Perspective API
 
 </details>
+
 ---
+
 # RAG Evaluation
 <details>
 <summary>RAG Evaluation . . . </summary>
@@ -713,7 +716,9 @@ Context Recall = 1.0
 Excellent retrieval pipeline.
 
 </details>
+
 ---
+
 # Agent Evaluation
 
 <details>
